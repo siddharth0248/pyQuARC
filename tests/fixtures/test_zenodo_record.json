@@ -1,0 +1,284 @@
+{
+    "created": "2026-03-27T20:45:13.871821+00:00",
+    "modified": "2026-04-27T22:00:27.781482+00:00",
+    "id": 50,
+    "conceptrecid": "49",
+    "doi": "10.83615/DASP.50",
+    "conceptdoi": "10.83615/DASP.49",
+    "doi_url": "https://handle.test.datacite.org/10.83615/DASP.50",
+    "metadata": {
+        "title": "Test 3272026",
+        "doi": "10.83615/DASP.50",
+        "publication_date": "2026-03-27",
+        "description": "<p>Test NASA</p>",
+        "access_right": "open",
+        "creators": [
+            {
+                "name": "Test, Person",
+                "affiliation": "Glenn Research Center; Johnson Space Center; Cornell University; Massachusetts Institute of Technology"
+            }
+        ],
+        "contributors": [
+            {
+                "name": "Jane, Doe",
+                "affiliation": "Goddard Space Flight Center; Kennedy Space Center; Brown University",
+                "type": "ContactPerson"
+            }
+        ],
+        "keywords": [
+            "Test",
+            "Test 2"
+        ],
+        "related_identifiers": [
+            {
+                "identifier": "Test",
+                "relation": "isRequiredBy",
+                "resource_type": "dataset",
+                "scheme": "other"
+            }
+        ],
+        "dates": [
+            {
+                "type": "collected",
+                "description": "Test"
+            }
+        ],
+        "version": "2.0",
+        "references": [
+            "Test"
+        ],
+        "language": "eng",
+        "custom": {
+            "code:codeRepository": "https://example.com",
+            "code:programmingLanguage": [
+                {
+                    "id": "python",
+                    "title": {
+                        "en": "Python"
+                    }
+                }
+            ],
+            "code:developmentStatus": {
+                "id": "concept",
+                "title": {
+                    "cs": "Koncept",
+                    "en": "Concept",
+                    "es": "Concepto",
+                    "sv": "Koncept"
+                }
+            },
+            "nasa:instrument": [
+                {
+                    "id": "spectrometer",
+                    "title": {
+                        "en": "Spectrometer"
+                    }
+                }
+            ],
+            "nasa:instrument_other": [
+                "Test"
+            ],
+            "nasa:mission": [
+                {
+                    "id": "mission_1",
+                    "title": {
+                        "en": "Mission 1"
+                    }
+                }
+            ],
+            "nasa:mission_other": [
+                "Test"
+            ],
+            "nasa:platform": {
+                "id": "water_based",
+                "title": {
+                    "en": "Water-based"
+                }
+            },
+            "nasa:processing_level": {
+                "id": "reanalysis",
+                "title": {
+                    "en": "Reanalysis"
+                }
+            },
+            "nasa:science_topic": [
+                {
+                    "id": "science_topic_1",
+                    "title": {
+                        "en": "Science Topic 1"
+                    }
+                }
+            ],
+            "nasa:temporal_start": "2025-01-01",
+            "nasa:temporal_end": "2025-02-01",
+            "nasa:temporal_resolution": {
+                "id": "hourly",
+                "title": {
+                    "en": "Hourly"
+                }
+            },
+            "nasa:spatial_resolution": "10m",
+            "nasa:spatial_extents": "1,1,1,1",
+            "nasa:spatial_reference_type": {
+                "id": "celestial",
+                "title": {
+                    "en": "Celestial"
+                }
+            },
+            "nasa:access_url": "https://example.com",
+            "nasa:access_constraints": "Test",
+            "nasa:documentation_url": "https://example.com",
+            "nasa:use_constraints": "Test",
+            "nasa:quality_flags": true,
+            "nasa:update_frequency": {
+                "id": "monthly",
+                "title": {
+                    "en": "Monthly"
+                }
+            },
+            "nasa:experiment_description_html": "<p>Test</p>",
+            "nasa:experiment_url": "https://example.com"
+        },
+        "resource_type": {
+            "title": "Dataset",
+            "type": "dataset"
+        },
+        "journal": {
+            "issue": "Test",
+            "pages": "15-23",
+            "title": "Test",
+            "volume": "Test"
+        },
+        "meeting": {
+            "title": "Test",
+            "acronym": "Test",
+            "dates": "2025-01-01",
+            "place": "Test",
+            "url": "https://example.com",
+            "session": "VI",
+            "session_part": "1"
+        },
+        "imprint": {
+            "place": "Test",
+            "isbn": "0-06-251587-X"
+        },
+        "thesis": {
+            "university": "Test"
+        },
+        "alternate_identifiers": [
+            {
+                "identifier": "Test"
+            }
+        ],
+        "license": {
+            "id": "cc-by-4.0"
+        },
+        "grants": [
+            {
+                "code": "101129744",
+                "internal_id": "10.13039/501100000780::101129744",
+                "funder": {
+                    "name": "European Commission",
+                    "doi": "10.13039/501100000780",
+                    "acronym": "EC"
+                },
+                "title": "European Virtual Institute for Research Software Excellence",
+                "acronym": "EVERSE",
+                "program": "HORIZON.1.3",
+                "url": "https://cordis.europa.eu/project/id/101129744"
+            }
+        ],
+        "communities": [
+            {
+                "id": "planetary-science"
+            }
+        ],
+        "relations": {
+            "version": [
+                {
+                    "index": 0,
+                    "is_last": false,
+                    "parent": {
+                        "pid_type": "recid",
+                        "pid_value": "49"
+                    }
+                }
+            ]
+        }
+    },
+    "title": "Test 3272026",
+    "links": {
+        "self": "https://d2bkyuwgbw2w6x.cloudfront.net/api/records/50",
+        "self_html": "https://d2bkyuwgbw2w6x.cloudfront.net/records/50",
+        "preview_html": "https://d2bkyuwgbw2w6x.cloudfront.net/records/50?preview=1",
+        "doi": "https://handle.test.datacite.org/10.83615/DASP.50",
+        "self_doi": "https://handle.test.datacite.org/10.83615/DASP.50",
+        "self_doi_html": "https://d2bkyuwgbw2w6x.cloudfront.net/doi/10.83615/DASP.50",
+        "reserve_doi": "https://d2bkyuwgbw2w6x.cloudfront.net/api/records/50/draft/pids/doi",
+        "parent": "https://d2bkyuwgbw2w6x.cloudfront.net/api/records/49",
+        "parent_html": "https://d2bkyuwgbw2w6x.cloudfront.net/records/49",
+        "parent_doi": "https://handle.test.datacite.org/10.83615/DASP.49",
+        "parent_doi_html": "https://d2bkyuwgbw2w6x.cloudfront.net/doi/10.83615/DASP.49",
+        "self_iiif_manifest": "https://d2bkyuwgbw2w6x.cloudfront.net/api/iiif/record:50/manifest",
+        "self_iiif_sequence": "https://d2bkyuwgbw2w6x.cloudfront.net/api/iiif/record:50/sequence/default",
+        "files": "https://d2bkyuwgbw2w6x.cloudfront.net/api/records/50/files",
+        "media_files": "https://d2bkyuwgbw2w6x.cloudfront.net/api/records/50/media-files",
+        "thumbnails": {
+            "10": "https://d2bkyuwgbw2w6x.cloudfront.net/api/iiif/record:50:This%20is%20a%20dummy%20PDF.pdf/full/%5E10,/0/default.jpg",
+            "50": "https://d2bkyuwgbw2w6x.cloudfront.net/api/iiif/record:50:This%20is%20a%20dummy%20PDF.pdf/full/%5E50,/0/default.jpg",
+            "100": "https://d2bkyuwgbw2w6x.cloudfront.net/api/iiif/record:50:This%20is%20a%20dummy%20PDF.pdf/full/%5E100,/0/default.jpg",
+            "250": "https://d2bkyuwgbw2w6x.cloudfront.net/api/iiif/record:50:This%20is%20a%20dummy%20PDF.pdf/full/%5E250,/0/default.jpg",
+            "750": "https://d2bkyuwgbw2w6x.cloudfront.net/api/iiif/record:50:This%20is%20a%20dummy%20PDF.pdf/full/%5E750,/0/default.jpg",
+            "1200": "https://d2bkyuwgbw2w6x.cloudfront.net/api/iiif/record:50:This%20is%20a%20dummy%20PDF.pdf/full/%5E1200,/0/default.jpg"
+        },
+        "archive": "https://d2bkyuwgbw2w6x.cloudfront.net/api/records/50/files-archive",
+        "archive_media": "https://d2bkyuwgbw2w6x.cloudfront.net/api/records/50/media-files-archive",
+        "latest": "https://d2bkyuwgbw2w6x.cloudfront.net/api/records/50/versions/latest",
+        "latest_html": "https://d2bkyuwgbw2w6x.cloudfront.net/records/50/latest",
+        "versions": "https://d2bkyuwgbw2w6x.cloudfront.net/api/records/50/versions",
+        "draft": "https://d2bkyuwgbw2w6x.cloudfront.net/api/records/50/draft",
+        "access_links": "https://d2bkyuwgbw2w6x.cloudfront.net/api/records/50/access/links",
+        "access_grants": "https://d2bkyuwgbw2w6x.cloudfront.net/api/records/50/access/grants",
+        "access_users": "https://d2bkyuwgbw2w6x.cloudfront.net/api/records/50/access/users",
+        "access_request": "https://d2bkyuwgbw2w6x.cloudfront.net/api/records/50/access/request",
+        "access": "https://d2bkyuwgbw2w6x.cloudfront.net/api/records/50/access",
+        "communities": "https://d2bkyuwgbw2w6x.cloudfront.net/api/records/50/communities",
+        "communities-suggestions": "https://d2bkyuwgbw2w6x.cloudfront.net/api/records/50/communities-suggestions",
+        "request_deletion": "https://d2bkyuwgbw2w6x.cloudfront.net/api/records/50/request-deletion",
+        "file_modification": "https://d2bkyuwgbw2w6x.cloudfront.net/api/records/50/file-modification",
+        "requests": "https://d2bkyuwgbw2w6x.cloudfront.net/api/records/50/requests"
+    },
+    "updated": "2026-04-27T22:00:27.781482+00:00",
+    "recid": "50",
+    "revision": 6,
+    "files": [
+        {
+            "id": "d055e2c5-ba50-4f87-8050-068ede1dab71",
+            "key": "This is a dummy PDF.pdf",
+            "size": 18107,
+            "checksum": "md5:47ea2836f55e2fa813f62879e472ce1f",
+            "links": {
+                "self": "https://d2bkyuwgbw2w6x.cloudfront.net/api/records/50/files/This is a dummy PDF.pdf/content"
+            }
+        }
+    ],
+    "swh": {},
+    "owners": [
+        {
+            "id": "1"
+        }
+    ],
+    "status": "published",
+    "stats": {
+        "downloads": 7,
+        "unique_downloads": 6,
+        "views": 6,
+        "unique_views": 5,
+        "version_downloads": 7,
+        "version_unique_downloads": 6,
+        "version_unique_views": 5,
+        "version_views": 6
+    },
+    "state": "done",
+    "submitted": true
+}

@@ -6,8 +6,9 @@ ECHO10_C = "echo-c"
 UMM_C = "umm-c"
 UMM_G = "umm-g"
 ECHO10_G = "echo-g"
+ZENODO = "zenodo"
 
-SUPPORTED_FORMATS = [DIF, ECHO10_C, UMM_C, UMM_G, ECHO10_G]
+SUPPORTED_FORMATS = [DIF, ECHO10_C, UMM_C, UMM_G, ECHO10_G, ZENODO]
 
 # Changed to os instead of pathlib
 # https://github.com/aio-libs/aiohttp/issues/3977

@@ -19,7 +19,7 @@ if __name__ == "__main__":
     from code.utils import get_concept_type, get_headers
 else:
     from .code.checker import Checker
-    from .code.constants import COLOR, ECHO10_C, SUPPORTED_FORMATS
+    from .code.constants import COLOR, ECHO10_C, SUPPORTED_FORMATS, ZENODO
     from .code.downloader import Downloader
     from .code.utils import get_cmr_url, is_valid_cmr_url
     from .code.utils import get_concept_type, get_headers
@@ -389,7 +389,7 @@ if __name__ == "__main__":
         action="store",
         nargs="?",
         type=str,
-        help=f"The metadata format. Choices are: echo-c (echo10 collection), echo-g (echo10 granule), dif10 (dif10 collection), umm-c (umm-json collection), umm-g (umm-json granules)",
+        help=f"The metadata format. Choices are: echo-c (echo10 collection), echo-g (echo10 granule), dif10 (dif10 collection), umm-c (umm-json collection), umm-g (umm-json granules), zenodo (Zenodo/InvenioRDM record)",
     )
     parser.add_argument(
         "--cmr_host",

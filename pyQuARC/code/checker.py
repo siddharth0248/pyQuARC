@@ -17,7 +17,7 @@ from .url_validator import UrlValidator
 from .schema_validator import SchemaValidator
 from .constants import UMM_C  # or however you define metadata format
 
-from .constants import ECHO10_C, SCHEMA_PATHS
+from .constants import ECHO10_C, SCHEMA_PATHS, ZENODO
 
 
 class Checker:
@@ -295,7 +295,7 @@ class Checker:
 
         kwargs = {}
         parser = json.loads
-        if not self.metadata_format.startswith("umm-"):
+        if not self.metadata_format.startswith("umm-") and self.metadata_format != ZENODO:
             parser = parse
             kwargs = {"postprocessor": _xml_postprocessor}
         json_metadata = parser(metadata_content, **kwargs)

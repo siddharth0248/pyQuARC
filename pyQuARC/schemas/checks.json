@@ -318,5 +318,41 @@
         "data_type": "custom",
         "check_function": "opendap_link_check",
         "available": true
+    },
+    "forbidden_values_check": {
+        "data_type": "string",
+        "check_function": "forbidden_values_check",
+        "description": "Checks that a field value does not contain any forbidden strings.",
+        "available": true
+    },
+    "min_length_check": {
+        "data_type": "string",
+        "check_function": "min_length_check",
+        "description": "Checks that a field value meets a minimum character length.",
+        "available": true
+    },
+    "regex_check": {
+        "data_type": "string",
+        "check_function": "regex_check",
+        "description": "Checks that a field value matches a given regex pattern.",
+        "available": true
+    },
+    "fields_not_equal_check": {
+        "data_type": "custom",
+        "check_function": "fields_not_equal_check",
+        "description": "Checks that two fields do not have the same value.",
+        "available": true
+    },
+    "required_if_check": {
+        "data_type": "custom",
+        "check_function": "required_if_check",
+        "description": "Checks that a field is present when another field equals a specific value.",
+        "available": true
+    },
+    "min_items_check": {
+        "data_type": "custom",
+        "check_function": "min_items_check",
+        "description": "Checks that a list field contains at least a minimum number of items.",
+        "available": true
     }
 }

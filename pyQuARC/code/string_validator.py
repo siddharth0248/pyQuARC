@@ -495,6 +495,63 @@ class StringValidator(BaseValidator):
         )
         return {"valid": validity, "value": platform_shortname}
 
+    @staticmethod
+    @if_arg
+    def forbidden_values_check(value, forbidden_list):
+        """
+        Checks that `value` does not contain any of the forbidden strings (case-insensitive)
+
+        Args:
+            value (str): The field value to check
+            forbidden_list (list): List of forbidden strings
+
+        Returns:
+            (dict) An object with the validity of the check and the instance
+        """
+        value_lower = value.lower().strip()
+        for forbidden in forbidden_list:
+            if forbidden.lower() in value_lower:
+                return {"valid": False, "value": value}
+        return {"valid": True, "value": value}
+
+    @staticmethod
+    @if_arg
+    def min_length_check(value, min_length):
+        """
+        Checks that the length of `value` is at least `min_length`
+
+        Args:
+            value (str): The field value
+            min_length (int): Minimum required length
+
+        Returns:
+            (dict) An object with the validity of the check and the instance
+        """
+        length = len(str(value))
+        return {
+            "valid": length >= int(min_length),
+            "value": length,
+        }
+
+    @staticmethod
+    @if_arg
+    def regex_check(value, pattern):
+        """
+        Checks that `value` matches the given regex `pattern`
+
+        Args:
+            value (str): The field value
+            pattern (str): The regex pattern
+
+        Returns:
+            (dict) An object with the validity of the check and the instance
+        """
+        import re
+        return {
+            "valid": bool(re.match(pattern, str(value))),
+            "value": value,
+        }
+
     @if_arg
     def validate_granule_data_format_against_collection(
         granule_data_format, collection_shortname=None, version=None, dataset_id=None

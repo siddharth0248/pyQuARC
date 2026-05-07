@@ -1110,5 +1110,149 @@
         "url": "https://wiki.earthdata.nasa.gov/display/CMR/Related+URLs"
     },
         "remediation": "Recommend providing an OPeNDAP in the granule's Online Resources or Related URLs fields for enhanced data accessibility."
+    },
+    "title_min_length_check": {
+        "failure": "The title is too short (current length: `{}`). A minimum of 10 characters is recommended.",
+        "help": {
+            "message": "",
+            "url": "https://wiki.earthdata.nasa.gov/display/CMR/Entry+Title"
+        },
+        "remediation": "Provide a more descriptive title with at least 10 characters."
+    },
+    "title_forbidden_values_check": {
+        "failure": "The title `{}` contains a generic or placeholder term (e.g. 'test', 'sample', 'untitled', 'dataset').",
+        "help": {
+            "message": "",
+            "url": "https://wiki.earthdata.nasa.gov/display/CMR/Entry+Title"
+        },
+        "remediation": "Replace the title with a meaningful, descriptive name for the dataset."
+    },
+    "title_description_not_same_check": {
+        "failure": "The title and description have identical content.",
+        "help": {
+            "message": "",
+            "url": "https://wiki.earthdata.nasa.gov/display/CMR/Abstract"
+        },
+        "remediation": "Provide a distinct description that elaborates on the dataset beyond what the title conveys."
+    },
+    "description_min_length_check": {
+        "failure": "The description is too short (current length: `{}`). A minimum of 100 characters is recommended.",
+        "help": {
+            "message": "",
+            "url": "https://wiki.earthdata.nasa.gov/display/CMR/Abstract"
+        },
+        "remediation": "Provide a more comprehensive description of at least 100 characters."
+    },
+    "long_description_recommended_check": {
+        "failure": "The description is less than 250 characters (current length: `{}`). A longer description improves discoverability.",
+        "help": {
+            "message": "",
+            "url": "https://wiki.earthdata.nasa.gov/display/CMR/Abstract"
+        },
+        "remediation": "Consider expanding the description to at least 250 characters, similar to a journal abstract."
+    },
+    "version_presence_check": {
+        "failure": "No version information is provided.",
+        "help": {
+            "message": "",
+            "url": "https://wiki.earthdata.nasa.gov/display/CMR/Version"
+        },
+        "remediation": "Provide a version identifier for the dataset (e.g. '1', '1.0', '001')."
+    },
+    "access_constraints_presence_check": {
+        "failure": "No access constraints information is provided.",
+        "help": {
+            "message": "",
+            "url": "https://wiki.earthdata.nasa.gov/display/CMR/Access+Constraints"
+        },
+        "remediation": "Provide an access constraints value such as 'Public', 'Restricted', 'Internal', or 'Embargoed'."
+    },
+    "access_constraints_vocab_check": {
+        "failure": "The access constraints value `{}` is not from the controlled vocabulary.",
+        "help": {
+            "message": "",
+            "url": "https://wiki.earthdata.nasa.gov/display/CMR/Access+Constraints"
+        },
+        "remediation": "Select an access constraints value from: ['Public', 'Restricted', 'Internal', 'Embargoed']."
+    },
+    "use_constraints_conditional_check": {
+        "failure": "Use constraints are required when access is set to 'Restricted' but none were provided.",
+        "help": {
+            "message": "",
+            "url": "https://wiki.earthdata.nasa.gov/display/CMR/Use+Constraints"
+        },
+        "remediation": "Provide a use constraints description explaining the restrictions on this dataset."
+    },
+    "collection_platform_presence_check": {
+        "failure": "No platform information is provided.",
+        "help": {
+            "message": "",
+            "url": "https://wiki.earthdata.nasa.gov/display/CMR/Platform"
+        },
+        "remediation": "Provide at least one platform short name. Use a valid GCMD platform keyword where possible."
+    },
+    "platform_other_description_check": {
+        "failure": "Platform is set to 'Other' but no descriptive long name is provided.",
+        "help": {
+            "message": "",
+            "url": "https://wiki.earthdata.nasa.gov/display/CMR/Platform"
+        },
+        "remediation": "When platform short name is 'Other', provide a descriptive long name to identify the platform."
+    },
+    "collection_instrument_presence_check": {
+        "failure": "No instrument information is provided.",
+        "help": {
+            "message": "",
+            "url": "https://wiki.earthdata.nasa.gov/display/CMR/Instrument"
+        },
+        "remediation": "Provide at least one instrument short name. Use a valid GCMD instrument keyword where possible."
+    },
+    "instrument_other_description_check": {
+        "failure": "Instrument is set to 'Other' but no descriptive long name is provided.",
+        "help": {
+            "message": "",
+            "url": "https://wiki.earthdata.nasa.gov/display/CMR/Instrument"
+        },
+        "remediation": "When instrument short name is 'Other', provide a descriptive long name to identify the instrument."
+    },
+    "spatial_reference_type_vocab_check": {
+        "failure": "The spatial reference type `{}` is not from the controlled vocabulary.",
+        "help": {
+            "message": "",
+            "url": "https://wiki.earthdata.nasa.gov/display/CMR/Spatial+Extent"
+        },
+        "remediation": "Select a spatial reference type from: ['Geographic', 'Projected', 'UTM', 'Polar', 'Custom']."
+    },
+    "spatial_resolution_presence_check": {
+        "failure": "No spatial resolution information is provided.",
+        "help": {
+            "message": "",
+            "url": "https://wiki.earthdata.nasa.gov/display/CMR/Spatial+Extent"
+        },
+        "remediation": "Provide spatial resolution or bounding coordinate information to help users understand the spatial coverage."
+    },
+    "spatial_resolution_units_check": {
+        "failure": "The spatial resolution value `{}` does not match the expected format (e.g. '30 m', '1.5 km', '0.25 deg').",
+        "help": {
+            "message": "",
+            "url": "https://wiki.earthdata.nasa.gov/display/CMR/Spatial+Extent"
+        },
+        "remediation": "Provide the spatial resolution as a number followed by a unit: 'm', 'km', or 'deg' (e.g. '30 m', '1 km')."
+    },
+    "temporal_resolution_vocab_check": {
+        "failure": "The temporal resolution value `{}` is not from the controlled vocabulary.",
+        "help": {
+            "message": "",
+            "url": "https://wiki.earthdata.nasa.gov/display/CMR/Temporal+Extent"
+        },
+        "remediation": "Select a temporal resolution from: ['Hourly', 'Daily', 'Weekly', 'Monthly', 'Yearly']."
+    },
+    "science_keywords_min_count_check": {
+        "failure": "Only `{}` science keyword(s) provided. At least 3 are recommended.",
+        "help": {
+            "message": "",
+            "url": "https://wiki.earthdata.nasa.gov/display/CMR/Science+Keywords"
+        },
+        "remediation": "Provide at least 3 science keywords from the GCMD keyword list to improve discoverability."
     }
 }

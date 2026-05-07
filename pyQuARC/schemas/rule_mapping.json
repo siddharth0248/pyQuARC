@@ -5906,5 +5906,575 @@
         },
         "severity": "info",
         "check_id": "url_update_email_check"
+    },
+    "title_min_length_check": {
+        "rule_name": "Title Minimum Length Check",
+        "fields_to_apply": {
+            "echo-c": [
+                {
+                    "fields": ["Collection/DataSetId"],
+                    "data": [10]
+                }
+            ],
+            "dif10": [
+                {
+                    "fields": ["DIF/Entry_Title"],
+                    "data": [10]
+                }
+            ],
+            "umm-c": [
+                {
+                    "fields": ["EntryTitle"],
+                    "data": [10]
+                }
+            ],
+            "zenodo": [
+                {
+                    "fields": ["metadata/title"],
+                    "data": [10]
+                }
+            ]
+        },
+        "severity": "warning",
+        "check_id": "min_length_check"
+    },
+    "title_forbidden_values_check": {
+        "rule_name": "Title Forbidden Values Check",
+        "fields_to_apply": {
+            "echo-c": [
+                {
+                    "fields": ["Collection/DataSetId"],
+                    "data": [["test", "sample", "untitled", "dataset"]]
+                }
+            ],
+            "dif10": [
+                {
+                    "fields": ["DIF/Entry_Title"],
+                    "data": [["test", "sample", "untitled", "dataset"]]
+                }
+            ],
+            "umm-c": [
+                {
+                    "fields": ["EntryTitle"],
+                    "data": [["test", "sample", "untitled", "dataset"]]
+                }
+            ],
+            "zenodo": [
+                {
+                    "fields": ["metadata/title"],
+                    "data": [["test", "sample", "untitled", "dataset"]]
+                }
+            ]
+        },
+        "severity": "warning",
+        "check_id": "forbidden_values_check"
+    },
+    "title_description_not_same_check": {
+        "rule_name": "Title and Description Not Same Check",
+        "fields_to_apply": {
+            "echo-c": [
+                {
+                    "fields": [
+                        "Collection/DataSetId",
+                        "Collection/Description"
+                    ]
+                }
+            ],
+            "dif10": [
+                {
+                    "fields": [
+                        "DIF/Entry_Title",
+                        "DIF/Summary/Abstract"
+                    ]
+                }
+            ],
+            "umm-c": [
+                {
+                    "fields": [
+                        "EntryTitle",
+                        "Abstract"
+                    ]
+                }
+            ],
+            "zenodo": [
+                {
+                    "fields": [
+                        "metadata/title",
+                        "metadata/description"
+                    ]
+                }
+            ]
+        },
+        "severity": "warning",
+        "check_id": "fields_not_equal_check"
+    },
+    "description_min_length_check": {
+        "rule_name": "Description Minimum Length Check",
+        "fields_to_apply": {
+            "echo-c": [
+                {
+                    "fields": ["Collection/Description"],
+                    "data": [100]
+                }
+            ],
+            "dif10": [
+                {
+                    "fields": ["DIF/Summary/Abstract"],
+                    "data": [100]
+                }
+            ],
+            "umm-c": [
+                {
+                    "fields": ["Abstract"],
+                    "data": [100]
+                }
+            ],
+            "zenodo": [
+                {
+                    "fields": ["metadata/description"],
+                    "data": [100]
+                }
+            ]
+        },
+        "severity": "warning",
+        "check_id": "min_length_check"
+    },
+    "long_description_recommended_check": {
+        "rule_name": "Long Description Recommended Check",
+        "fields_to_apply": {
+            "echo-c": [
+                {
+                    "fields": ["Collection/Description"],
+                    "data": [250]
+                }
+            ],
+            "dif10": [
+                {
+                    "fields": ["DIF/Summary/Abstract"],
+                    "data": [250]
+                }
+            ],
+            "umm-c": [
+                {
+                    "fields": ["Abstract"],
+                    "data": [250]
+                }
+            ],
+            "zenodo": [
+                {
+                    "fields": ["metadata/description"],
+                    "data": [250]
+                }
+            ]
+        },
+        "severity": "info",
+        "check_id": "min_length_check"
+    },
+    "version_presence_check": {
+        "rule_name": "Version Presence Check",
+        "fields_to_apply": {
+            "echo-c": [
+                {
+                    "fields": ["Collection/VersionId"]
+                }
+            ],
+            "dif10": [
+                {
+                    "fields": ["DIF/Version"]
+                }
+            ],
+            "umm-c": [
+                {
+                    "fields": ["Version"]
+                }
+            ],
+            "zenodo": [
+                {
+                    "fields": ["metadata/version"]
+                }
+            ]
+        },
+        "severity": "warning",
+        "check_id": "one_item_presence_check"
+    },
+    "access_constraints_presence_check": {
+        "rule_name": "Access Constraints Presence Check",
+        "fields_to_apply": {
+            "echo-c": [
+                {
+                    "fields": ["Collection/RestrictionFlag"]
+                }
+            ],
+            "dif10": [
+                {
+                    "fields": ["DIF/Access_Constraints"]
+                }
+            ],
+            "umm-c": [
+                {
+                    "fields": ["AccessConstraints/Value"]
+                }
+            ],
+            "zenodo": [
+                {
+                    "fields": ["metadata/custom/nasa:access_constraints"]
+                }
+            ]
+        },
+        "severity": "error",
+        "check_id": "one_item_presence_check"
+    },
+    "access_constraints_vocab_check": {
+        "rule_name": "Access Constraints Vocabulary Check",
+        "fields_to_apply": {
+            "dif10": [
+                {
+                    "fields": ["DIF/Access_Constraints"],
+                    "data": [["Public", "Restricted", "Internal", "Embargoed"]]
+                }
+            ],
+            "umm-c": [
+                {
+                    "fields": ["AccessConstraints/Value"],
+                    "data": [["Public", "Restricted", "Internal", "Embargoed"]]
+                }
+            ],
+            "zenodo": [
+                {
+                    "fields": ["metadata/custom/nasa:access_constraints"],
+                    "data": [["Public", "Restricted", "Internal", "Embargoed"]]
+                }
+            ]
+        },
+        "severity": "error",
+        "check_id": "controlled_keywords_check"
+    },
+    "use_constraints_conditional_check": {
+        "rule_name": "Use Constraints Required When Restricted Check",
+        "fields_to_apply": {
+            "dif10": [
+                {
+                    "fields": [
+                        "DIF/Use_Constraints/Description",
+                        "DIF/Access_Constraints",
+                        "Restricted"
+                    ]
+                }
+            ],
+            "umm-c": [
+                {
+                    "fields": [
+                        "UseConstraints/Description",
+                        "AccessConstraints/Value",
+                        "Restricted"
+                    ]
+                }
+            ],
+            "zenodo": [
+                {
+                    "fields": [
+                        "metadata/custom/nasa:use_constraints",
+                        "metadata/custom/nasa:access_constraints",
+                        "Restricted"
+                    ]
+                }
+            ]
+        },
+        "severity": "error",
+        "check_id": "required_if_check"
+    },
+    "collection_platform_presence_check": {
+        "rule_name": "Collection Platform Presence Check",
+        "fields_to_apply": {
+            "echo-c": [
+                {
+                    "fields": ["Collection/Platforms/Platform/ShortName"]
+                }
+            ],
+            "dif10": [
+                {
+                    "fields": ["DIF/Platform/Short_Name"]
+                }
+            ],
+            "umm-c": [
+                {
+                    "fields": ["Platforms/ShortName"]
+                }
+            ],
+            "zenodo": [
+                {
+                    "fields": ["metadata/custom/nasa:platform/id"]
+                }
+            ]
+        },
+        "severity": "error",
+        "check_id": "one_item_presence_check"
+    },
+    "platform_other_description_check": {
+        "rule_name": "Platform Other Description Required Check",
+        "fields_to_apply": {
+            "echo-c": [
+                {
+                    "fields": [
+                        "Collection/Platforms/Platform/LongName",
+                        "Collection/Platforms/Platform/ShortName",
+                        "Other"
+                    ]
+                }
+            ],
+            "dif10": [
+                {
+                    "fields": [
+                        "DIF/Platform/Long_Name",
+                        "DIF/Platform/Short_Name",
+                        "Other"
+                    ]
+                }
+            ],
+            "umm-c": [
+                {
+                    "fields": [
+                        "Platforms/LongName",
+                        "Platforms/ShortName",
+                        "Other"
+                    ]
+                }
+            ],
+            "zenodo": [
+                {
+                    "fields": [
+                        "metadata/custom/nasa:platform_other",
+                        "metadata/custom/nasa:platform/id",
+                        "other"
+                    ]
+                }
+            ]
+        },
+        "severity": "error",
+        "check_id": "required_if_check"
+    },
+    "collection_instrument_presence_check": {
+        "rule_name": "Collection Instrument Presence Check",
+        "fields_to_apply": {
+            "echo-c": [
+                {
+                    "fields": ["Collection/Platforms/Platform/Instruments/Instrument/ShortName"]
+                }
+            ],
+            "dif10": [
+                {
+                    "fields": ["DIF/Platform/Instrument/Short_Name"]
+                }
+            ],
+            "umm-c": [
+                {
+                    "fields": ["Platforms/Instruments/ShortName"]
+                }
+            ],
+            "zenodo": [
+                {
+                    "fields": ["metadata/custom/nasa:instrument/id"]
+                }
+            ]
+        },
+        "severity": "error",
+        "check_id": "one_item_presence_check"
+    },
+    "instrument_other_description_check": {
+        "rule_name": "Instrument Other Description Required Check",
+        "fields_to_apply": {
+            "echo-c": [
+                {
+                    "fields": [
+                        "Collection/Platforms/Platform/Instruments/Instrument/LongName",
+                        "Collection/Platforms/Platform/Instruments/Instrument/ShortName",
+                        "Other"
+                    ]
+                }
+            ],
+            "dif10": [
+                {
+                    "fields": [
+                        "DIF/Platform/Instrument/Long_Name",
+                        "DIF/Platform/Instrument/Short_Name",
+                        "Other"
+                    ]
+                }
+            ],
+            "umm-c": [
+                {
+                    "fields": [
+                        "Platforms/Instruments/LongName",
+                        "Platforms/Instruments/ShortName",
+                        "Other"
+                    ]
+                }
+            ],
+            "zenodo": [
+                {
+                    "fields": [
+                        "metadata/custom/nasa:instrument_other",
+                        "metadata/custom/nasa:instrument/id",
+                        "other"
+                    ]
+                }
+            ]
+        },
+        "severity": "error",
+        "check_id": "required_if_check"
+    },
+    "spatial_reference_type_vocab_check": {
+        "rule_name": "Spatial Reference Type Vocabulary Check",
+        "fields_to_apply": {
+            "echo-c": [
+                {
+                    "fields": ["Collection/Spatial/SpatialCoverageType"],
+                    "data": [["Geographic", "Projected", "UTM", "Polar", "Custom"]]
+                }
+            ],
+            "dif10": [
+                {
+                    "fields": ["DIF/Spatial_Coverage/Spatial_Coverage_Type"],
+                    "data": [["Geographic", "Projected", "UTM", "Polar", "Custom"]]
+                }
+            ],
+            "umm-c": [
+                {
+                    "fields": ["SpatialExtent/SpatialCoverageType"],
+                    "data": [["Geographic", "Projected", "UTM", "Polar", "Custom"]]
+                }
+            ],
+            "zenodo": [
+                {
+                    "fields": ["metadata/custom/nasa:spatial_reference_type/id"],
+                    "data": [["geographic", "projected", "utm", "polar", "custom"]]
+                }
+            ]
+        },
+        "severity": "warning",
+        "check_id": "controlled_keywords_check"
+    },
+    "spatial_resolution_presence_check": {
+        "rule_name": "Spatial Resolution Presence Check",
+        "fields_to_apply": {
+            "echo-c": [
+                {
+                    "fields": [
+                        "Collection/Spatial/HorizontalSpatialDomain/Geometry/BoundingRectangle/WestBoundingCoordinate",
+                        "Collection/Spatial/HorizontalSpatialDomain/Geometry/BoundingRectangle/EastBoundingCoordinate",
+                        "Collection/Spatial/HorizontalSpatialDomain/Geometry/BoundingRectangle/NorthBoundingCoordinate",
+                        "Collection/Spatial/HorizontalSpatialDomain/Geometry/BoundingRectangle/SouthBoundingCoordinate"
+                    ]
+                }
+            ],
+            "dif10": [
+                {
+                    "fields": [
+                        "DIF/Spatial_Coverage/Geometry/Bounding_Rectangle/Westernmost_Longitude",
+                        "DIF/Spatial_Coverage/Geometry/Bounding_Rectangle/Easternmost_Longitude",
+                        "DIF/Spatial_Coverage/Geometry/Bounding_Rectangle/Northernmost_Latitude",
+                        "DIF/Spatial_Coverage/Geometry/Bounding_Rectangle/Southernmost_Latitude"
+                    ]
+                }
+            ],
+            "umm-c": [
+                {
+                    "fields": [
+                        "SpatialExtent/HorizontalSpatialDomain/ResolutionAndCoordinateSystem/HorizontalDataResolution/GenericResolutions/XDimension"
+                    ]
+                }
+            ],
+            "zenodo": [
+                {
+                    "fields": ["metadata/custom/nasa:spatial_resolution"]
+                }
+            ]
+        },
+        "severity": "warning",
+        "check_id": "one_item_presence_check"
+    },
+    "spatial_resolution_units_check": {
+        "rule_name": "Spatial Resolution Units Format Check",
+        "fields_to_apply": {
+            "umm-c": [
+                {
+                    "fields": [
+                        "SpatialExtent/HorizontalSpatialDomain/ResolutionAndCoordinateSystem/HorizontalDataResolution/GenericResolutions/Unit"
+                    ],
+                    "data": ["^[0-9]+(\\.[0-9]+)?\\s?(m|km|deg)$"]
+                }
+            ],
+            "zenodo": [
+                {
+                    "fields": ["metadata/custom/nasa:spatial_resolution"],
+                    "data": ["^[0-9]+(\\.[0-9]+)?\\s?(m|km|deg)$"]
+                }
+            ]
+        },
+        "severity": "warning",
+        "check_id": "regex_check"
+    },
+    "temporal_resolution_vocab_check": {
+        "rule_name": "Temporal Resolution Vocabulary Check",
+        "fields_to_apply": {
+            "echo-c": [
+                {
+                    "fields": ["Collection/Temporal/TemporalRangeType"],
+                    "data": [["Hourly", "Daily", "Weekly", "Monthly", "Yearly"]]
+                }
+            ],
+            "dif10": [
+                {
+                    "fields": ["DIF/Temporal_Coverage/Temporal_Resolution"],
+                    "data": [["Hourly", "Daily", "Weekly", "Monthly", "Yearly"]]
+                }
+            ],
+            "umm-c": [
+                {
+                    "fields": ["TemporalExtents/TemporalResolution/Value"],
+                    "data": [["Hourly", "Daily", "Weekly", "Monthly", "Yearly"]]
+                }
+            ],
+            "zenodo": [
+                {
+                    "fields": ["metadata/custom/nasa:temporal_resolution/id"],
+                    "data": [["hourly", "daily", "weekly", "monthly", "yearly"]]
+                }
+            ]
+        },
+        "severity": "warning",
+        "check_id": "controlled_keywords_check"
+    },
+    "science_keywords_min_count_check": {
+        "rule_name": "Science Keywords Minimum Count Check",
+        "fields_to_apply": {
+            "echo-c": [
+                {
+                    "fields": ["Collection/ScienceKeywords/ScienceKeyword"],
+                    "data": [3]
+                }
+            ],
+            "dif10": [
+                {
+                    "fields": ["DIF/Science_Keywords"],
+                    "data": [3]
+                }
+            ],
+            "umm-c": [
+                {
+                    "fields": ["ScienceKeywords"],
+                    "data": [3]
+                }
+            ],
+            "zenodo": [
+                {
+                    "fields": ["metadata/keywords"],
+                    "data": [3]
+                }
+            ]
+        },
+        "severity": "warning",
+        "check_id": "min_items_check"
+    }
 }
-}
+

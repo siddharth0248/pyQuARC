@@ -7,7 +7,7 @@ from jsonschema import Draft7Validator, RefResolver
 from lxml import etree
 from urllib.request import pathname2url
 from .utils import read_json_schema_from_url
-from .constants import ECHO10_C, SCHEMA_PATHS, UMM_C, UMM_G
+from .constants import ECHO10_C, SCHEMA_PATHS, UMM_C, UMM_G, ZENODO
 
 
 SUPPORTED_UMM_C_VERSIONS = ["v1.18.4"]
@@ -70,6 +70,8 @@ class SchemaValidator:
 
         if metadata_format.startswith("umm-"):
             self.validator_func = self.run_json_validator
+        elif metadata_format == ZENODO:
+            self.validator_func = lambda _: {}  # no structural schema for Zenodo
         else:
             self.validator_func = self.run_xml_validator
         self.check_messages = check_messages

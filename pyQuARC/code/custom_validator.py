@@ -280,6 +280,66 @@ class CustomValidator(BaseValidator):
         return {"valid": int(count) == num_items, "value": (count, num_items)}
 
     @staticmethod
+    def fields_not_equal_check(field_a, field_b):
+        """
+        Checks that two fields do not have the same value (case-insensitive strip)
+
+        Args:
+            field_a: First field value
+            field_b: Second field value
+
+        Returns:
+            (dict) An object with the validity of the check and the instance
+        """
+        if field_a is None or field_b is None:
+            return {"valid": True, "value": (field_a, field_b)}
+        valid = str(field_a).strip().lower() != str(field_b).strip().lower()
+        return {"valid": valid, "value": (field_a, field_b)}
+
+    @staticmethod
+    def required_if_check(field_value, condition_value, expected_value):
+        """
+        Checks that `field_value` is present when `condition_value` equals `expected_value`
+
+        Args:
+            field_value: The field that is conditionally required
+            condition_value: The field whose value triggers the requirement
+            expected_value (str): The value that triggers the requirement
+
+        Returns:
+            (dict) An object with the validity of the check and the instance
+        """
+        if condition_value is None:
+            return {"valid": True, "value": field_value}
+        if str(condition_value).strip() == str(expected_value).strip():
+            valid = field_value is not None and str(field_value).strip() != ""
+            return {"valid": valid, "value": field_value}
+        return {"valid": True, "value": field_value}
+
+    @staticmethod
+    def min_items_check(field_value, min_count):
+        """
+        Checks that a list field has at least `min_count` items
+
+        Args:
+            field_value: The field value (expected to be a list)
+            min_count (int): Minimum number of items required
+
+        Returns:
+            (dict) An object with the validity of the check and the instance
+        """
+        if field_value is None:
+            count = 0
+        elif isinstance(field_value, list):
+            count = len(field_value)
+        else:
+            count = 1
+        return {
+            "valid": count >= int(min_count),
+            "value": count,
+        }
+
+    @staticmethod
     def opendap_link_check(related_urls, key, extra=None):
         """
         Checks if the related_urls contains an OPeNDAP link by looking for "opendap" in the URL
