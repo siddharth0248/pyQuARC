@@ -169,6 +169,7 @@ class CustomChecker:
 
         invalid_values = []
         validity = None
+        severity = None
 
         # Process arguments using multithreading
         with ThreadPoolExecutor() as executor:

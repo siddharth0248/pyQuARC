@@ -1,0 +1,53 @@
+{
+    "created": "2026-05-03T08:20:00.000000+00:00",
+    "modified": "2026-05-03T09:00:00.000000+00:00",
+    "id": 102,
+    "conceptrecid": "102",
+    "doi": "10.99999/NASA.102",
+    "metadata": {
+      "title": "Sea Surface Temperature Analysis",
+      "publication_date": "2026-05-03",
+      "description": "<p>Sea surface temperature dataset from ocean buoy observations.</p>",
+      "access_right": "restricted",
+      "creators": [
+        {
+          "name": "Williams, Sarah"
+        }
+      ],
+      "keywords": [
+        "Ocean",
+        "Temperature"
+      ],
+      "custom": {
+        "nasa:instrument": [
+          {
+            "id": "buoy_sensor",
+            "title": {
+              "en": "Buoy Sensor"
+            }
+          }
+        ],
+        "nasa:platform": {
+          "id": "marine",
+          "title": {
+            "en": "Marine"
+          }
+        },
+        "nasa:temporal_start": "2024-01-01",
+        "nasa:spatial_resolution": "25km",
+        "nasa:access_url": "not-a-valid-url",
+        "nasa:update_frequency": {
+          "id": "weekly",
+          "title": {
+            "en": "Weekly"
+          }
+        }
+      },
+      "resource_type": {
+        "title": "Dataset",
+        "type": "dataset"
+      }
+    },
+    "status": "draft",
+    "submitted": false
+  }

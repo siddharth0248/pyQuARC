@@ -68,6 +68,8 @@ class StringValidator(BaseValidator):
         """
         if type(value) == str:
             value = [value]
+        elif not isinstance(value, list):
+            value = [str(value)]
 
         validity = True
         for keyword in value:

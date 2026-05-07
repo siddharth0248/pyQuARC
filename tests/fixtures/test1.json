@@ -1,0 +1,115 @@
+{
+    "created": "2026-05-01T10:15:22.000000+00:00",
+    "modified": "2026-05-02T11:45:10.000000+00:00",
+    "id": 101,
+    "conceptrecid": "100",
+    "doi": "10.99999/NASA.101",
+    "conceptdoi": "10.99999/NASA.100",
+    "metadata": {
+      "title": "Global Aerosol Optical Depth from MODIS Level-3",
+      "doi": "10.99999/NASA.101",
+      "publication_date": "2026-05-01",
+      "description": "<p>Daily global aerosol optical depth measurements derived from MODIS observations.</p>",
+      "access_right": "open",
+      "creators": [
+        {
+          "name": "Smith, Laura",
+          "affiliation": "NASA Goddard Space Flight Center"
+        }
+      ],
+      "contributors": [
+        {
+          "name": "Johnson, Mark",
+          "affiliation": "Jet Propulsion Laboratory",
+          "type": "DataManager"
+        }
+      ],
+      "keywords": [
+        "NASA",
+        "MODIS",
+        "Aerosol",
+        "Climate"
+      ],
+      "version": "1.0",
+      "language": "eng",
+      "custom": {
+        "code:codeRepository": "https://github.com/nasa/modis-aod",
+        "code:programmingLanguage": [
+          {
+            "id": "python",
+            "title": {
+              "en": "Python"
+            }
+          }
+        ],
+        "nasa:instrument": [
+          {
+            "id": "modis",
+            "title": {
+              "en": "MODIS"
+            }
+          }
+        ],
+        "nasa:mission": [
+          {
+            "id": "terra",
+            "title": {
+              "en": "Terra"
+            }
+          }
+        ],
+        "nasa:platform": {
+          "id": "satellite",
+          "title": {
+            "en": "Satellite"
+          }
+        },
+        "nasa:processing_level": {
+          "id": "level3",
+          "title": {
+            "en": "Level 3"
+          }
+        },
+        "nasa:science_topic": [
+          {
+            "id": "atmosphere",
+            "title": {
+              "en": "Atmospheric Science"
+            }
+          }
+        ],
+        "nasa:temporal_start": "2025-01-01",
+        "nasa:temporal_end": "2025-12-31",
+        "nasa:temporal_resolution": {
+          "id": "daily",
+          "title": {
+            "en": "Daily"
+          }
+        },
+        "nasa:spatial_resolution": "1km",
+        "nasa:spatial_extents": "-180,-90,180,90",
+        "nasa:access_url": "https://example.nasa.gov/modis-aod",
+        "nasa:documentation_url": "https://docs.nasa.gov/modis-aod",
+        "nasa:update_frequency": {
+          "id": "daily",
+          "title": {
+            "en": "Daily"
+          }
+        }
+      },
+      "resource_type": {
+        "title": "Dataset",
+        "type": "dataset"
+      },
+      "license": {
+        "id": "cc-by-4.0"
+      },
+      "communities": [
+        {
+          "id": "earth-science"
+        }
+      ]
+    },
+    "status": "published",
+    "submitted": true
+  }

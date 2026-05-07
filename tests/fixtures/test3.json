@@ -1,0 +1,42 @@
+{
+    "created": "INVALID_DATE",
+    "modified": "2026-05-05T18:10:00.000000+00:00",
+    "id": 103,
+    "conceptrecid": "103",
+    "doi": "INVALID_DOI",
+    "metadata": {
+      "title": "",
+      "publication_date": "2026/05/05",
+      "description": "Methane flux estimates over Arctic tundra regions.",
+      "creators": [],
+      "contributors": [
+        {
+          "name": "Brown, Emily",
+          "type": "Editor"
+        }
+      ],
+      "keywords": "methane, arctic",
+      "custom": {
+        "nasa:instrument": [],
+        "nasa:mission": [
+          {
+            "id": "icesat-2",
+            "title": {
+              "en": "ICESat-2"
+            }
+          }
+        ],
+        "nasa:processing_level": "L4",
+        "nasa:temporal_start": "future-date",
+        "nasa:temporal_end": null,
+        "nasa:spatial_resolution": 500,
+        "nasa:quality_flags": "yes",
+        "nasa:access_constraints": 12345
+      },
+      "resource_type": {
+        "title": "Dataset"
+      }
+    },
+    "status": "unknown",
+    "submitted": "true"
+  }
