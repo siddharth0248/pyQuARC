@@ -11,6 +11,7 @@ if __name__ == "__main__":
     from code.constants import (
         COLOR,
         ECHO10_C,
+        LLM_RULE_IDS,
         SUPPORTED_FORMATS,
         CONTENT_TYPE_MAP,
     )
@@ -19,7 +20,13 @@ if __name__ == "__main__":
     from code.utils import get_concept_type, get_headers
 else:
     from .code.checker import Checker
-    from .code.constants import COLOR, ECHO10_C, SUPPORTED_FORMATS, ZENODO
+    from .code.constants import (
+        COLOR,
+        ECHO10_C,
+        LLM_RULE_IDS,
+        SUPPORTED_FORMATS,
+        ZENODO,
+    )
     from .code.downloader import Downloader
     from .code.utils import get_cmr_url, is_valid_cmr_url
     from .code.utils import get_concept_type, get_headers
@@ -48,6 +55,7 @@ class ARC:
         messages_override=None,
         version=None,
         cmr_host=get_cmr_url(),
+        llm_assist=False,
     ):
         """
         Args:
@@ -59,6 +67,7 @@ class ARC:
             checks_override (str): The filepath of the checks_override file
             rules_override (str): The filepath of the rules_override file
             messages_override (str): The filepath of the checks_override file
+            llm_assist (bool): Run optional LLM-backed rules (e.g. keyword alignment).
         """
 
         self.input_concept_ids = input_concept_ids
@@ -81,6 +90,7 @@ class ARC:
         self.messages_override = messages_override
         self.cmr_host = cmr_host
         self.version = version
+        self.llm_assist = llm_assist
 
     def _cmr_query(self):
         """
@@ -206,6 +216,7 @@ class ARC:
             checks_override=self.checks_override,
             rules_override=self.rules_override,
             messages_override=self.messages_override,
+            llm_assist=self.llm_assist,
         )
 
         if self.concept_ids:
@@ -264,8 +275,11 @@ class ARC:
 
 
     @staticmethod
-    def _error_message(messages):
+    def _error_message(messages, llm_assisted=False):
         severities = ["error", "warning", "info"]
+        prefix = ""
+        if llm_assisted:
+            prefix = f"{COLOR['llm']}[LLM]{END} "
         result_string = ""
         for message in messages:
             colored_message = [
@@ -273,7 +287,7 @@ class ARC:
                 for severity in severities
                 if (text := severity.title()) and message.startswith(text)
             ][0]
-            result_string += f"\t\t{colored_message}{END}\n"
+            result_string += f"\t\t{prefix}{colored_message}{END}\n"
         return result_string
 
     @staticmethod
@@ -313,15 +327,34 @@ class ARC:
             validity = True
             for field, result in error["errors"].items():
                 for rule_type, value in result.items():
-                    if not value.get("valid"):
-                        messages = value.get("message")
-                        error_prompt += f"\n\t>> {field}: {END}\n"
-                        error_prompt += self._error_message(messages)
+                    is_llm = rule_type in LLM_RULE_IDS
+                    failed = not value.get("valid")
+                    llm_note = (
+                        is_llm
+                        and value.get("valid")
+                        and value.get("message")
+                    )
+                    if not (failed or llm_note):
+                        continue
+                    messages = value.get("message") or []
+                    if is_llm:
                         error_prompt += (
-                            (f"\t\t{remedy}\n")
-                            if (remedy := value.get("remediation"))
-                            else ""
+                            f"\n\t{COLOR['llm']}{COLOR['bright']}"
+                            f"[LLM assist]{END} >> {field}:{END}\n"
                         )
+                    else:
+                        error_prompt += f"\n\t>> {field}: {END}\n"
+                    error_prompt += self._error_message(
+                        messages, llm_assisted=is_llm
+                    )
+                    if remedy := value.get("remediation"):
+                        if is_llm:
+                            error_prompt += (
+                                f"\t\t{COLOR['llm']}[LLM]{END} {remedy}\n"
+                            )
+                        else:
+                            error_prompt += f"\t\t{remedy}\n"
+                    if failed:
                         validity = False
             if validity:
                 error_prompt += "\n\tNo validation errors\n"
@@ -406,6 +439,12 @@ if __name__ == "__main__":
         help="The revision version of the collection. Default is the latest version.",
     )
 
+    parser.add_argument(
+        "--llm-assist",
+        action="store_true",
+        help="Enable optional LLM-backed checks (e.g. keyword vs title/abstract review). Requires OPENAI_API_KEY.",
+    )
+
     args = parser.parse_args()
     parser.usage = parser.format_help().replace("optional ", "")
 
@@ -424,6 +463,19 @@ if __name__ == "__main__":
             raise Exception(f"The given CMR host is not valid: {cmr_host}")
         os.environ["CMR_URL"] = cmr_host
 
+    if args.llm_assist:
+        try:
+            from pathlib import Path
+
+            from dotenv import load_dotenv
+
+            # Repo root (parent of pyQuARC/) and package dir
+            load_dotenv(Path(__file__).resolve().parents[1] / ".env")
+            load_dotenv(Path(__file__).resolve().parent / ".env")
+            load_dotenv()
+        except ImportError:
+            pass
+
     arc = ARC(
         query=args.query,
         input_concept_ids=args.concept_ids or [],
@@ -432,6 +484,7 @@ if __name__ == "__main__":
         metadata_format=args.format or ECHO10_C,
         cmr_host=get_cmr_url(),
         version=args.version,
+        llm_assist=args.llm_assist,
     )
     results = arc.validate()
     arc.display_results()

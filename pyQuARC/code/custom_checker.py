@@ -170,6 +170,7 @@ class CustomChecker:
         invalid_values = []
         validity = None
         severity = None
+        smd_suggestions = None
 
         # Process arguments using multithreading
         with ThreadPoolExecutor() as executor:
@@ -191,6 +192,10 @@ class CustomChecker:
                     func_return = future.result()
                     severity = func_return.get("severity")
                     valid = func_return["valid"]  # can be True, False or None
+                    if isinstance(func_return, dict) and func_return.get(
+                        "smd_suggestions"
+                    ):
+                        smd_suggestions = func_return["smd_suggestions"]
                     if valid is not None:
                         if valid:
                             validity = validity or (validity is None)
@@ -204,4 +209,6 @@ class CustomChecker:
         result["value"] = invalid_values
         if severity:
             result["severity"] = severity
+        if smd_suggestions:
+            result["smd_suggestions"] = smd_suggestions
         return result

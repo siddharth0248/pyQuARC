@@ -398,3 +398,18 @@ class CustomValidator(BaseValidator):
 
         return return_obj
 
+    @staticmethod
+    def llm_keywords_alignment_check(keywords, title, description):
+        """
+        Optional OpenAI review: keywords should be supported by title + abstract.
+
+        Field order in ``rule_mapping`` must be keywords, then title, then description
+        so results attach to the ``metadata/keywords`` path.
+
+        Requires ``OPENAI_API_KEY`` (e.g. in repo-root ``.env``) and the ``openai``
+        package. If the key is missing, returns ``valid: None`` (check skipped).
+        """
+        from .llm_keyword_review import review_keywords_against_record
+
+        return review_keywords_against_record(title, description, keywords)
+

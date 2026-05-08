@@ -17,7 +17,7 @@ from .url_validator import UrlValidator
 from .schema_validator import SchemaValidator
 from .constants import UMM_C  # or however you define metadata format
 
-from .constants import ECHO10_C, SCHEMA_PATHS, ZENODO
+from .constants import ECHO10_C, LLM_RULE_IDS, SCHEMA_PATHS, ZENODO
 
 
 class Checker:
@@ -31,6 +31,7 @@ class Checker:
         messages_override=None,
         checks_override=None,
         rules_override=None,
+        llm_assist=False,
     ):
         """
         Args:
@@ -42,14 +43,20 @@ class Checker:
             checks_override ([str]): path to json with override checks
             rules_override ([str]): path to json with override rules
             or add missing checks
+            llm_assist (bool): If True, run optional LLM-backed rules (e.g. keyword review).
         """
         self.metadata_format = metadata_format
+        self.llm_assist = llm_assist
 
         self.msgs_override_file = messages_override or "check_messages_override"
         self.rules_override_file = rules_override or "rules_override"
         self.checks_override_file = checks_override or "checks_override"
 
         self.load_schemas()
+        if not llm_assist:
+            for rid in LLM_RULE_IDS:
+                self.rule_mapping.pop(rid, None)
+                self.rules_override.pop(rid, None)
 
         self.custom_checker = CustomChecker()
         self.scheduler = Scheduler(
@@ -187,18 +194,58 @@ class Checker:
             func, metadata_content, field_dict, external_data, relation
         )
 
-        self.tracker.update_data(rule_id, main_field, result["valid"])
-
-        # Avoid adding null valid results for rules that are not applied
-        if result["valid"] is None:
+        llm_skipped = False
+        if result["valid"] is None and rule_id in LLM_RULE_IDS:
+            llm_skipped = True
+            result = {
+                "valid": False,
+                "value": (
+                    "LLM keyword review skipped: set OPENAI_API_KEY or install the openai package.",
+                ),
+                "severity": "info",
+            }
+        elif result["valid"] is None:
+            self.tracker.update_data(rule_id, main_field, None)
             return
+
+        self.tracker.update_data(rule_id, main_field, result["valid"])
 
         result_dict[main_field][rule_id] = result
 
         message = self.build_message(result, rule_id)
         if message:
             result["message"] = message
+
+        if llm_skipped:
+            result["remediation"] = (
+                "Add OPENAI_API_KEY to the repository root .env file (same folder as "
+                "pyQuARC/), or export it in your shell; run pip install -r requirements.txt."
+            )
+        elif not message and rule_id in LLM_RULE_IDS and result.get("valid") is True:
+            result["message"] = [
+                "Info: LLM keyword review: no unsupported keywords detected "
+                "relative to the title and abstract."
+            ]
+            result["remediation"] = ""
+        elif message:
             result["remediation"] = self.message(rule_id, "remediation")
+
+        smd = result.get("smd_suggestions") if rule_id in LLM_RULE_IDS else None
+        if smd and isinstance(smd, list):
+            suffix = ", ".join(str(x) for x in smd if x)
+            if suffix:
+                msgs = result.setdefault("message", [])
+                if isinstance(msgs, str):
+                    result["message"] = [msgs]
+                    msgs = result["message"]
+                elif msgs is None:
+                    result["message"] = []
+                    msgs = result["message"]
+                msgs.append(
+                    "Info: NASA SMD keyword suggestions "
+                    "(controlled list: pyQuARC/schemas/nasa_smd_keywords.json): "
+                    f"{suffix}"
+                )
 
     def _run_func(self, func, check, rule_id, metadata_content, result_dict):
         """

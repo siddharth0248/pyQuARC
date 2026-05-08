@@ -354,5 +354,11 @@
         "check_function": "min_items_check",
         "description": "Checks that a list field contains at least a minimum number of items.",
         "available": true
+    },
+    "llm_keywords_alignment_check": {
+        "data_type": "custom",
+        "check_function": "llm_keywords_alignment_check",
+        "description": "Uses an LLM to flag keywords not supported by the title and abstract.",
+        "available": true
     }
 }

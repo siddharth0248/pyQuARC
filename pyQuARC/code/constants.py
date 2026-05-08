@@ -10,6 +10,9 @@ ZENODO = "zenodo"
 
 SUPPORTED_FORMATS = [DIF, ECHO10_C, UMM_C, UMM_G, ECHO10_G, ZENODO]
 
+# Rules that call external LLM APIs; only scheduled when Checker(..., llm_assist=True).
+LLM_RULE_IDS = frozenset({"keywords_llm_alignment_check"})
+
 # Changed to os instead of pathlib
 # https://github.com/aio-libs/aiohttp/issues/3977
 
@@ -69,6 +72,8 @@ COLOR = {
     "warning": Fore.YELLOW,
     "reset": Style.RESET_ALL,
     "bright": Style.BRIGHT,
+    # Optional --llm-assist findings (distinct from rule-based severities)
+    "llm": Fore.MAGENTA,
 }
 
 GCMD_BASIC_URL = "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/"

@@ -1,5 +1,7 @@
-"Hits: 15","page_num: 1","page_size: 2000","Keyword Version: 14.3","Revision: 2022-08-26 10:35:31","Timestamp: 2022-09-15 16:21:36","Terms Of Use: https://cdn.earthdata.nasa.gov/conduit/upload/5182/KeywordsCommunityGuide_Baseline_v1_SIGNED_FINAL.pdf","The most up to date XML representations can be found here: https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/horizontalresolutionrange/?format=xml","Case native"
-Horizontal_Resolution_Range,UUID
+"Keyword Version: 23.8","Revision: 2026-04-29T10:52:37.449Z","Timestamp: 2026-04-30 06:00:49","Terms Of Use: https://cdn.earthdata.nasa.gov/conduit/upload/5182/KeywordsCommunityGuide_Baseline_v1_SIGNED_FINAL.pdf","The most up to date XML representations can be found here: https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/horizontalresolutionrange/?format=xml"
+"Horizontal_Resolution_Range","UUID"
+"< 1 meter","08e4b31c-0be3-49cd-9374-caac345e7402"
+"> 1000 km or > 10 degrees","c19001e4-dfbf-491b-b6d5-c4d0cee8f2fe"
 "1 km - < 10 km or approximately .01 degree - < .09 degree","6dd8224f-944e-4798-ac48-44c23a567eeb"
 "1 meter - < 30 meters","abf43d91-a65d-4b3b-a6dd-593e211b2c7b"
 "10 km - < 50 km or approximately .09 degree - < .5 degree","3b36beea-9637-4213-bdbe-42e878ca14df"
@@ -11,6 +13,4 @@ Horizontal_Resolution_Range,UUID
 "50 km  - < 100 km or approximately .5 degree - < 1 degree","35a7a6f2-69fe-4ba7-a2b5-91f83f52afb3"
 "500 km - < 1000 km or approximately 5 degrees - < 10 degrees","e2d588c7-76a5-4655-bfaf-bf66874b61c4"
 "500 meters - < 1 km","9e5ebee1-3ba2-4522-8d90-7ddf47987581"
-"< 1 meter","08e4b31c-0be3-49cd-9374-caac345e7402"
-"> 1000 km or > 10 degrees","c19001e4-dfbf-491b-b6d5-c4d0cee8f2fe"
 "Point Resolution","75c9d806-9e29-40f5-b479-4c63c90f77a9"

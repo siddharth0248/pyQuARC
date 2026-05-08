@@ -6475,6 +6475,22 @@
         },
         "severity": "warning",
         "check_id": "min_items_check"
+    },
+    "keywords_llm_alignment_check": {
+        "rule_name": "Keywords LLM Alignment Check (title & abstract)",
+        "fields_to_apply": {
+            "zenodo": [
+                {
+                    "fields": [
+                        "metadata/keywords",
+                        "metadata/title",
+                        "metadata/description"
+                    ]
+                }
+            ]
+        },
+        "severity": "warning",
+        "check_id": "llm_keywords_alignment_check"
     }
 }
 

@@ -5,9 +5,9 @@
     "conceptrecid": "102",
     "doi": "10.99999/NASA.102",
     "metadata": {
-      "title": "Sea Surface Temperature Analysis",
+      "title": "SOil moisture dataset",
       "publication_date": "2026-05-03",
-      "description": "<p>Sea surface temperature dataset from ocean buoy observations.</p>",
+      "description": "<p>SOil moisture dataset from soil moisture sensors.</p>",
       "access_right": "restricted",
       "creators": [
         {
@@ -15,7 +15,7 @@
         }
       ],
       "keywords": [
-        "Ocean",
+        "Soil",
         "Temperature"
       ],
       "custom": {

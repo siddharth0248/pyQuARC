@@ -1254,5 +1254,13 @@
             "url": "https://wiki.earthdata.nasa.gov/display/CMR/Science+Keywords"
         },
         "remediation": "Provide at least 3 science keywords from the GCMD keyword list to improve discoverability."
+    },
+    "keywords_llm_alignment_check": {
+        "failure": "{}",
+        "help": {
+            "message": "Requires OPENAI_API_KEY in the environment or repo-root .env file.",
+            "url": ""
+        },
+        "remediation": "Remove or replace weak keywords using terms from pyQuARC/schemas/nasa_smd_keywords.json where they fit the title and abstract."
     }
 }
