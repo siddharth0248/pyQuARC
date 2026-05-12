@@ -1,6 +1,9 @@
 import argparse
+import json
 import os
 import os.path
+import sys
+
 import requests
 import xmltodict
 
@@ -14,6 +17,7 @@ if __name__ == "__main__":
         LLM_RULE_IDS,
         SUPPORTED_FORMATS,
         CONTENT_TYPE_MAP,
+        ZENODO,
     )
     from code.downloader import Downloader
     from code.utils import get_cmr_url, is_valid_cmr_url
@@ -444,9 +448,41 @@ if __name__ == "__main__":
         action="store_true",
         help="Enable optional LLM-backed checks (e.g. keyword vs title/abstract review). Requires OPENAI_API_KEY.",
     )
+    parser.add_argument(
+        "--preview-description-mapping",
+        action="store_true",
+        help="Print a report of fields that could be filled from metadata.description (Zenodo). "
+        "Does not modify the file. Uses OPENAI_API_KEY when set for detailed mapping hints.",
+    )
 
     args = parser.parse_args()
     parser.usage = parser.format_help().replace("optional ", "")
+
+    if args.preview_description_mapping:
+        if not args.file:
+            parser.error("--preview-description-mapping requires --file")
+        fmt = args.format or ECHO10_C
+        if fmt != ZENODO:
+            parser.error(
+                f"--preview-description-mapping only supports --format {ZENODO}"
+            )
+        try:
+            from pathlib import Path
+
+            from dotenv import load_dotenv
+
+            load_dotenv(Path(__file__).resolve().parents[1] / ".env")
+            load_dotenv(Path(__file__).resolve().parent / ".env")
+            load_dotenv()
+        except ImportError:
+            pass
+        from code.description_mapping_preview import preview_zenodo_record
+
+        path = os.path.abspath(args.file)
+        with open(path, "r", encoding="utf-8") as f:
+            record = json.loads(f.read())
+        print(preview_zenodo_record(record))
+        sys.exit(0)
 
     if not (args.query or args.concept_ids or args.file or args.fake):
         parser.error(

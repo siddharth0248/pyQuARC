@@ -9,7 +9,7 @@
       "title": "Global Aerosol Optical Depth from MODIS Level-3",
       "doi": "10.99999/NASA.101",
       "publication_date": "2026-05-01",
-      "description": "<p>Daily global aerosol optical depth measurements derived from MODIS observations.</p>",
+      "description": "<p>This NASA MODIS Terra Level-3 dataset provides global aerosol optical depth measurements at 1km spatial resolution with daily temporal coverage across 2025. Generated using Python-based processing pipelines from NASA Goddard Space Flight Center and Jet Propulsion Laboratory, it supports atmospheric and climate research by tracking aerosol distribution, air quality trends, and radiative forcing impacts. Data is openly accessible with full documentation and versioned updates for reproducibility</p>",
       "access_right": "open",
       "creators": [
         {
@@ -58,12 +58,7 @@
             }
           }
         ],
-        "nasa:platform": {
-          "id": "satellite",
-          "title": {
-            "en": "Satellite"
-          }
-        },
+        "nasa:platform": {},
         "nasa:processing_level": {
           "id": "level3",
           "title": {
