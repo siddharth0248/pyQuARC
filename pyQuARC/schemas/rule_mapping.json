@@ -807,6 +807,23 @@
                         "Granule/AssociatedBrowseImageUrls/ProviderBrowseUrl/URL"
                     ]
                 }
+            ],
+            "zenodo": [
+                {
+                    "fields": [
+                        "metadata/custom/nasa:access_url"
+                    ]
+                },
+                {
+                    "fields": [
+                        "metadata/custom/nasa:documentation_url"
+                    ]
+                },
+                {
+                    "fields": [
+                        "metadata/custom/nasa:experiment_url"
+                    ]
+                }
             ]
         },
         "severity": "error",
@@ -1060,6 +1077,23 @@
                 {
                     "fields": [
                         "Granule/AssociatedBrowseImageUrls/ProviderBrowseUrl/URL"
+                    ]
+                }
+            ],
+            "zenodo": [
+                {
+                    "fields": [
+                        "metadata/custom/nasa:access_url"
+                    ]
+                },
+                {
+                    "fields": [
+                        "metadata/custom/nasa:documentation_url"
+                    ]
+                },
+                {
+                    "fields": [
+                        "metadata/custom/nasa:experiment_url"
                     ]
                 }
             ]
@@ -6413,6 +6447,30 @@
         },
         "severity": "warning",
         "check_id": "regex_check"
+    },
+    "temporal_start_presence_check": {
+        "rule_name": "Temporal Start Presence Check",
+        "fields_to_apply": {
+            "zenodo": [
+                {
+                    "fields": ["metadata/custom/nasa:temporal_start"]
+                }
+            ]
+        },
+        "severity": "error",
+        "check_id": "one_item_presence_check"
+    },
+    "temporal_end_presence_check": {
+        "rule_name": "Temporal End Presence Check",
+        "fields_to_apply": {
+            "zenodo": [
+                {
+                    "fields": ["metadata/custom/nasa:temporal_end"]
+                }
+            ]
+        },
+        "severity": "error",
+        "check_id": "one_item_presence_check"
     },
     "temporal_resolution_vocab_check": {
         "rule_name": "Temporal Resolution Vocabulary Check",

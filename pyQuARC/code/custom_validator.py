@@ -86,14 +86,14 @@ class CustomValidator(BaseValidator):
     def one_item_presence_check(*field_values):
         """
         Checks if one of the specified fields is populated
-        At least one of the `field_values` should not be null
+        At least one of the `field_values` should not be null or empty string
         It is basically a OneOf check
         """
         validity = False
         value = None
 
         for field_value in field_values:
-            if field_value is not None:
+            if field_value is not None and field_value != "" and field_value != []:
                 value = field_value
                 validity = True
                 break

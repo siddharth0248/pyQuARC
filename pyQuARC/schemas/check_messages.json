@@ -1189,7 +1189,7 @@
             "message": "",
             "url": "https://wiki.earthdata.nasa.gov/display/CMR/Platform"
         },
-        "remediation": "Provide at least one platform short name. Use a valid GCMD platform keyword where possible."
+        "remediation": "Provide at least one platform short name. Use a valid platform keyword where possible."
     },
     "platform_other_description_check": {
         "failure": "Platform is set to 'Other' but no descriptive long name is provided.",
@@ -1246,6 +1246,22 @@
             "url": "https://wiki.earthdata.nasa.gov/display/CMR/Temporal+Extent"
         },
         "remediation": "Select a temporal resolution from: ['Hourly', 'Daily', 'Weekly', 'Monthly', 'Yearly']."
+    },
+    "temporal_start_presence_check": {
+        "failure": "Temporal start date is missing or empty.",
+        "help": {
+            "message": "",
+            "url": "https://wiki.earthdata.nasa.gov/display/CMR/Temporal+Extent"
+        },
+        "remediation": "Provide a temporal start date in ISO 8601 format (e.g. '2000-01-01')."
+    },
+    "temporal_end_presence_check": {
+        "failure": "Temporal end date is missing or empty.",
+        "help": {
+            "message": "",
+            "url": "https://wiki.earthdata.nasa.gov/display/CMR/Temporal+Extent"
+        },
+        "remediation": "Provide a temporal end date in ISO 8601 format, or indicate the dataset is ongoing."
     },
     "science_keywords_min_count_check": {
         "failure": "Only `{}` science keyword(s) provided. At least 3 are recommended.",
